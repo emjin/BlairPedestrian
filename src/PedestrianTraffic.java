@@ -5,5 +5,6 @@ public class PedestrianTraffic {
 		int numIntersections = 400; //Change this number
 		Room[] rooms = new Room[numRooms];
 		Intersection[] intersections = new Intersection[numIntersections];
+		//Test push thing okay guy
 	}
 }
