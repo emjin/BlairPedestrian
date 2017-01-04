@@ -1,3 +1,4 @@
+import java.util.Map;
 
 public class Person {
 	//public Node startNode;
@@ -6,7 +7,7 @@ public class Person {
 	public double speed; //amount to change location by each run unit
 	
 	public Node destNode;
-	public Intersection[] intersectionPrefs;
-	public Edge[] edgePrefs;
+	//public Intersection[] intersectionPrefs;
+	public Map<Room, Edge> edgePrefs; //Maps preferred edges to get to the room
 	public double numFriends;
 }
