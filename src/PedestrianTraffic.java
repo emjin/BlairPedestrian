@@ -2,7 +2,7 @@ import org.apache.commons.math3.distribution.NormalDistribution;
 
 public class PedestrianTraffic {
 	public static final double STUDENT_MU = 1.2; // feet/s
-	public static final double STUDENT_SIG = 3.0;
+	public static final double STUDENT_SIG = 4.0;
 	public static final int NUM_STUDENTS = 3000;
 	public static final int NUM_ROOMS = 3000;
 	public static final int NUM_INTERSECTIONS = 3000;
@@ -24,7 +24,7 @@ public class PedestrianTraffic {
 			while (stop.equals(start)){
 				stop = rooms[genClass()];
 			}
-			people[i] = new Person();
+			people[i] = new Person(start, stop, speed);
 		}
 	}
 
