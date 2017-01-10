@@ -1,10 +1,10 @@
 
 public class Room extends Node {
-	public Room(double c, double fR, double pp, Edge[] rout, Person[] peeps) {
+	public Room(double c, double fR, double pp, double x0, double y0) {
 		capacity = c;
 		flowRate = fR;
 		peopleHere = pp;
-		routes = rout;
-		people = peeps;
+		x = x0;
+		y = y0;
 	}
 }

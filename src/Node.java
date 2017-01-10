@@ -5,6 +5,8 @@ public abstract class Node {
 	public double peopleHere;
 	public Edge[] routes;
 	public Person[] people;
+	public double x;
+	public double y;
 	
 	public Node() {};
 }

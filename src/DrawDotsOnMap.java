@@ -1,17 +1,34 @@
 import java.awt.Color;
 import java.awt.Graphics;
+import java.awt.image.BufferedImage;
+import java.io.File;
+import java.io.IOException;
 
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JPanel;
 
 public class DrawDotsOnMap extends JFrame {
 	public DrawDotsOnMap() {
-		add(new NewPanel());
+		BufferedImage myPicture;
+		try {
+			myPicture = ImageIO.read(new File("path-to-file"));
+			JLabel picLabel = new JLabel(new ImageIcon(myPicture));
+			add(picLabel);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+
 	}
+	
 }
 
 class NewPanel extends JPanel {
-	double maxX, maxY, x0, y0;
+}
+
+	/*double maxX, maxY, x0, y0;
 	
 	void initgr() {
 		maxX = getWidth() - 1; //The biggest the x value can be
@@ -81,5 +98,5 @@ class NewPanel extends JPanel {
 				drawCurve(g, wid*i+wid/2, wid*j+wid/2, wid);
 			}
 		}
-	}
-}
+	}*/
+

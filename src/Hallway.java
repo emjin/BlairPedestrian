@@ -44,8 +44,8 @@ public class Hallway extends Edge {
 			capacity[Math.abs(side-1)] -= 1;
 		}
 		
-		if(person.location >= length) {
-			if (person.destNode.equals(sides[side][1])){
+		if(person.distance >= length) {
+			if (person.path.end.equals(sides[side][1])){
 				numPeople[side] -= 1;
 				//Add person to the intersection
 				//Remove person from hallways
