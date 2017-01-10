@@ -32,7 +32,7 @@ public class Path {
         return nodes.get(index);
     }
 
-    public Edge getHallway(int distance){
+    public Edge getHallway(double distance){
         for(int i = 1; i < distances.size(); i++){
             if(distances.get(i) < distance){
                 return hallways.get(i - 1);
@@ -41,7 +41,7 @@ public class Path {
         throw new RuntimeException("getHallway has a bug");
     }
 
-    public double getDistance(int distance){
+    public double getDistance(double distance){
         for(int i = 1; i < distances.size(); i++){
             if(distances.get(i) < distance){
                 return distances.get(i) - distance;
