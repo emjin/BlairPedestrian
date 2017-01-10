@@ -41,6 +41,13 @@ public class Person {
 		return path.getHallway(distance);
 	}
 
+	public Intersection getIntersection(){return path.getIntersection(distance);}
+
+	public double getRDistance(){
+		return path.getRDistance(distance);
+	}
+
+
 
 
 }
