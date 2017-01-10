@@ -32,7 +32,21 @@ public class Path {
         return nodes.get(index);
     }
 
-    public Edge getHallway(double distance){
+    public Intersection getIntersection(double distance){
+        for(int i = 1; i < distances.size(); i++){
+            if(distances.get(i) < distance && i != nodes.size()){
+                return (Intersection)nodes.get(i); //Maybe i +- 1. C
+            }
+        }
+        throw new RuntimeException("bug in getIntesection");
+    }
+
+    public double getRDistance(double distance){
+        return getHallway(distance).length - getDistance(distance);
+    }
+
+
+    public Hallway getHallway(double distance){
         for(int i = 1; i < distances.size(); i++){
             if(distances.get(i) < distance){
                 return hallways.get(i - 1);
