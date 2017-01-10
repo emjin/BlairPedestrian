@@ -7,7 +7,8 @@ public class Path {
     public Node start;
     public Node end;
     public List<Node> nodes;
-    public List<Edge> hallways;
+    public List<Double> distances;
+    public List<Hallway> hallways;
     int nIncrement = -1;
     int hIncrement = -1;
 
@@ -15,32 +16,39 @@ public class Path {
         this.start = start;
         this.end = end;
         nodes.add(start);
+        distances.add(new Double(0));
     }
 
     public void addNode(Node node){
         nodes.add(node);
     }
 
-    public void addEdge(Edge edge){
+    public void addEdge(Hallway edge){
         hallways.add(edge);
+        distances.add(edge.length + distances.get(distances.size() - 1));
     }
 
     public Node getNode(int index){
         return nodes.get(index);
     }
 
-    public Edge getHallway(int index){
-        return hallways.get(index);
+    public Edge getHallway(int distance){
+        for(int i = 1; i < distances.size(); i++){
+            if(distances.get(i) < distance){
+                return hallways.get(i - 1);
+            }
+        }
+        throw new RuntimeException("getHallway has a bug");
     }
 
-    public Node getNextNode(){
-        nIncrement++;
-        return nodes.get(nIncrement);
+    public double getDistance(int distance){
+        for(int i = 1; i < distances.size(); i++){
+            if(distances.get(i) < distance){
+                return distances.get(i) - distance;
+            }
+        }
+        throw new RuntimeException("getDistance has a bug");
     }
 
-    public Edge getNextEdge(){
-        hIncrement++;
-        return hallways.get(hIncrement);
-    }
 
 }
