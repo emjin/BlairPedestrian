@@ -15,9 +15,9 @@ public class Person {
 
 	}
 
-	public void run(double r, double p){ //Substracts you distance from the path.
+	public void run(double r, double p, double iConstant){ //Substracts you distance from the path.
 		double actSpeed = speed + pos(AVG-speed) * r / (r + 10) - pos((speed-MIN) * p / (p + 10));
-		distance += actSpeed;
+		distance += actSpeed*iConstant;
 	}
 
 	public double pos(double num){ //returns num if pos. 0 if neg.
