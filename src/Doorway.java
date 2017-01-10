@@ -8,11 +8,12 @@ public class Doorway extends Edge {
 	public Intersection exit;
 	
 	
-	public Doorway(double np, double cap, Person[] peeps, Room rm) {
+	public Doorway(double np, double cap, Person[] peeps, Room rm, double v) {
 		people = peeps;
 		numPeople = np;
 		capacity = cap;
 		room = rm;
+		vertical = v;
 	}
 	
 	public void flow() {

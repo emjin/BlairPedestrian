@@ -1,3 +1,7 @@
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
 import java.awt.image.BufferedImage;
 import java.io.File;
 import java.io.IOException;
@@ -6,6 +10,8 @@ import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JPanel;
+import javax.swing.Timer;
 
 import org.apache.commons.math3.distribution.NormalDistribution;
 
@@ -15,12 +21,17 @@ public class PedestrianTraffic {
 	public static final int NUM_STUDENTS = 3000;
 	public static int[] roomCDF = {}; //This will be the CDF of the rooms. We'll randomly sample from bill.
 	public static Map map = new Map();
-
+	
+	static Room[] rooms = Map.rooms;
+	static Intersection[] intersections = Map.intersections;
+	static Edge[] edges = Map.edges;
+	static Person[] people = new Person[NUM_STUDENTS];
+	
+	
 	public static void main(String[] args) {
+		
+		
 		//------------------Preparing program------------------
-		Room[] rooms = Map.rooms;
-		Intersection[] intersections = Map.intersections;
-		Person[] people = new Person[NUM_STUDENTS];
 
 		NormalDistribution studentSpeed = new NormalDistribution(STUDENT_MU, STUDENT_SIG);
 
@@ -34,30 +45,9 @@ public class PedestrianTraffic {
 			people[i] = new Person(start, stop, speed);
 		}		
 		
-		
-		//--------------------Make Frame stuff---------------------------
-		JFrame frame = new JFrame("BlairPedestrian");
-		frame.setVisible(true);
-		frame.setDefaultCloseOperation(JFrame.EXIT_ON_CLOSE);
-		frame.setBounds(0, 0, 600, 900);
-		BufferedImage floorPlan;
-	
-		try {
-			floorPlan = ImageIO.read(new File("FloorPlan.png"));
-			JLabel picLabel = new JLabel(new ImageIcon(floorPlan.getScaledInstance(120, 120, java.awt.Image.SCALE_SMOOTH)));
-			picLabel.setBounds(0, 0, 200, 300);
-			frame.add(picLabel);
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-
-		runModel();
+		Surface surface = new Surface(people, edges);
 	}
 	
-	public static void runModel() {
-		
-	}
-
 	public static int genClass(){
 		double num = Math.random();
 
@@ -69,5 +59,6 @@ public class PedestrianTraffic {
 		return (int)(Math.random()*2);
 		//throw new RuntimeException("Like, this should not happen.");
 	}
+
 
 }

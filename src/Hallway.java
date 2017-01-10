@@ -13,7 +13,7 @@ public class Hallway extends Edge {
 	
 	public Person[] people;
 	
-	public Hallway(double len, double cap, double numP, Node l1, Node l2, Node r1, Node r2) {
+	public Hallway(double len, double cap, double numP, Node l1, Node l2, Node r1, Node r2, double x0, double y0, double v) {
 		length = len;
 		
 		capacity[0] = cap;
@@ -26,6 +26,10 @@ public class Hallway extends Edge {
 		sides[0][1] = l2;
 		sides[1][0] = r1;
 		sides[1][1] = r2;
+		
+		x = x0;
+		y = y0;
+		vertical = v;
 	}
 	
 	public void flow() {

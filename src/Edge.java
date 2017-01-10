@@ -4,6 +4,9 @@ public abstract class Edge {
 	
 	public double[] capacity = new double[2];
 	public double[] numPeople = new double[2];
+	public double x;
+	public double y;
+	public double vertical;
 	
 	public Person[] people;
 	
