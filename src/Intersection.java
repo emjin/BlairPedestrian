@@ -1,5 +1,7 @@
 
 public class Intersection extends Node {
+	public Edge[] routes = new Edge[4]; 
+	
 	public Intersection(double c, double fR, double pp, double x0, double y0) {
 		capacity = c;
 		flowRate = fR;
