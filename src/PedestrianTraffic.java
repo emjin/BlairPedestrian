@@ -19,6 +19,7 @@ public class PedestrianTraffic {
 	public static final double STUDENT_MU = 1.2; // feet/s
 	public static final double STUDENT_SIG = 4.0;
 	public static final int NUM_STUDENTS = 3000;
+	publci static final int TIME = 3600;
 	public static int[] roomCDF = {}; //This will be the CDF of the rooms. We'll randomly sample from bill.
 	public static Map map;
 	
@@ -43,8 +44,37 @@ public class PedestrianTraffic {
 			while (stop.equals(start)){
 				stop = rooms[genClass()];
 			}
-			//people[i] = new Person(start, stop, speed);
-		}		
+			people[i] = new Person(start, stop, speed);
+		}
+
+		for(int time = 0; time < TIME; time++) {
+			double[] movement = new double[NUM_STUDENTS];
+			for (int i = 0; i < NUM_STUDENTS; i++) {
+				double pressure = 0;
+				double resistance = 0;
+				double iConstant = 0;
+				int intersectionP;
+				for (int j = 0; j < NUM_STUDENTS; j++) {
+					if(people[i].getHallway().equals(people[j].getHallway())){
+						double diff = people[i].getDistance() - people[j].getDistance();
+						if(diff > 0 && diff < 5){
+							resistance += (5-diff);
+						}
+						if(diff < 0 && diff > -5){
+							pressure += (5+diff);
+						}
+					}
+					if(person[j].getIntersection().equals(person[i].getIntersection())){
+						if(person[j].getDistance() < 10){
+							intersectionP++;
+							//Need some method of turning intersectionP into a slow down constant;
+						}
+					}
+				}
+
+				people[i].run(resistance,pressure,iConstant);
+			}
+		}
 		
 		Surface surface = new Surface(people, edges);
 	}

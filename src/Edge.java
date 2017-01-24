@@ -13,7 +13,7 @@ public abstract class Edge {
 	public Edge() {}
 	
 	public abstract void flow();
-	
+
 	public String toString() {
 		return x + ", " + y + " isVertical: " + vertical;
 	}
