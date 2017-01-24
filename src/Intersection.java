@@ -13,7 +13,18 @@ public class Intersection extends Node {
 	public void flow() {
 		for (int i = 0; i < people.length; i++) {
 			 Person person = people[i];
-			 Edge edge = person.path.getNextEdge();
+			 //Edge edge = person.path.getNextEdge();
 		}
+	}
+	
+	@Override
+	public String toString() {
+		String s = x + ", " + y;
+		for(int i = 0; i < 4; i++){
+			if(routes[i] != null){
+				s += " Edge" + i + " = " + routes[i].toString();
+			}
+		}
+		return s;
 	}
 }

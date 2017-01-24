@@ -2,13 +2,16 @@ public class Person {
 	public Path path;
 	public double distance; //distance along the path
 	public double speed; //amount to change location by each run unit
+	public double location; //maybe delete this
 	public static final double AVG = 5;
 	public static final double MIN = 1;
 
-	Map map = new Map();
+	Map map = PedestrianTraffic.map;
 
 	public Person(Node start, Node end, double speed){
 
+		//System.out.println("Person says hiiiiiiiiiiiiiii");
+		//System.out.println(start + " " + end);
 		path = map.genPath(start, end);
 		distance = getDistance();
 		this.speed = speed;

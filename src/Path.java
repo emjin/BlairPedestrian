@@ -1,3 +1,4 @@
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -6,13 +7,14 @@ import java.util.List;
 public class Path {
     public Node start;
     public Node end;
-    public List<Node> nodes;
-    public List<Double> distances;
-    public List<Hallway> hallways;
+    public List<Node> nodes = new ArrayList<Node>(); //may change type of list
+    public List<Double> distances = new ArrayList<Double>(); //may change type of list
+    public List<Hallway> hallways = new ArrayList<Hallway>(); //may change type of list
     int nIncrement = -1;
     int hIncrement = -1;
 
     public Path(Node start, Node end){
+    	//System.out.println("start " + start);
         this.start = start;
         this.end = end;
         nodes.add(start);

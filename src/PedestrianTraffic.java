@@ -20,7 +20,7 @@ public class PedestrianTraffic {
 	public static final double STUDENT_SIG = 4.0;
 	public static final int NUM_STUDENTS = 3000;
 	public static int[] roomCDF = {}; //This will be the CDF of the rooms. We'll randomly sample from bill.
-	public static Map map = new Map();
+	public static Map map;
 	
 	static Room[] rooms = Map.rooms;
 	static Intersection[] intersections = Map.intersections;
@@ -29,8 +29,9 @@ public class PedestrianTraffic {
 	
 	
 	public static void main(String[] args) {
-		
-		
+		map = new Map();
+		System.out.println(map);
+
 		//------------------Preparing program------------------
 
 		NormalDistribution studentSpeed = new NormalDistribution(STUDENT_MU, STUDENT_SIG);
@@ -42,7 +43,7 @@ public class PedestrianTraffic {
 			while (stop.equals(start)){
 				stop = rooms[genClass()];
 			}
-			people[i] = new Person(start, stop, speed);
+			//people[i] = new Person(start, stop, speed);
 		}		
 		
 		Surface surface = new Surface(people, edges);
