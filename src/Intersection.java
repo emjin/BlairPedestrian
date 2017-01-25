@@ -2,7 +2,7 @@
 public class Intersection extends Node {
 	public Hallway[] routes = new Hallway[3];
 
-	public Intersection(double c, double pp, Hallway[] hallways, double x0, double y0) {
+	public Intersection(double c, double pp, double x0, double y0) {
 		capacity = c;
 		routes = hallways;
 		peopleHere = pp;
