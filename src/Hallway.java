@@ -8,16 +8,16 @@ public class Hallway extends Edge {
 	//public double numPeople = new double;
 	public Node start;
 	public Node end;
-	
+
 	//public Person[] people;
-	
+
 	public Hallway(double len, double cap, double numP, Node start, Node end, double x0, double y0, double v) {
 		length = len;
-		
+
 		capacity = cap;
 		this.start = start;
 		this.end = end;
-		
+
 		x = x0;
 		y = y0;
 		vertical = v;

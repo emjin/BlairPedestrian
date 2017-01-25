@@ -14,7 +14,7 @@ public class Path {
     int hIncrement = -1;
 
     public Path(Node start, Node end){
-    	//System.out.println("start " + start);
+        //System.out.println("start " + start);
         this.start = start;
         this.end = end;
         nodes.add(start);
@@ -27,7 +27,9 @@ public class Path {
 
     public void addEdge(Hallway edge){
         hallways.add(edge);
-        distances.add(edge.length + distances.get(distances.size() - 1));
+        //System.out.println(edge.length);
+        distances.add(edge.length + distances.get(distances.size()-1));
+        //System.out.println(distances.get(distances.size()-1));
     }
 
     public Node getNode(int index){
@@ -36,7 +38,7 @@ public class Path {
 
     public Intersection getIntersection(double distance){
         for(int i = 1; i < distances.size(); i++){
-            if(distances.get(i) < distance && i != nodes.size()){
+            if(distances.get(i) < distance + 0.01 && i != nodes.size()-1){
                 return (Intersection)nodes.get(i); //Maybe i +- 1. C
             }
         }
@@ -49,21 +51,22 @@ public class Path {
 
 
     public Hallway getHallway(double distance){
-        for(int i = 1; i < distances.size(); i++){
-            if(distances.get(i) < distance){
-                return hallways.get(i - 1);
+        for(int i = hallways.size()-1; i >= 0; i--){
+            if(distances.get(i) < distance + 0.01){
+                return hallways.get(i);
             }
         }
         throw new RuntimeException("getHallway has a bug");
     }
 
     public double getDistance(double distance){
-        for(int i = 1; i < distances.size(); i++){
-            if(distances.get(i) < distance){
-                return distances.get(i) - distance;
+        for(int i = distances.size()-1; i >= 0; i--){
+            //System.out.println(distance);
+            if(distances.get(i) < distance + 0.01){
+                return distance - distances.get(i) ;
             }
         }
-        throw new RuntimeException("getDistance has a bug");
+        return -2;
     }
 
 

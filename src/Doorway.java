@@ -3,11 +3,11 @@ public class Doorway extends Edge {
 	public double capacity;
 	public double numPeople;
 	public Person[] people;
-	
+
 	public Room room;
 	public Intersection exit;
-	
-	
+
+
 	public Doorway(double np, double cap, Person[] peeps, Room rm, double v) {
 		people = peeps;
 		numPeople = np;
@@ -15,7 +15,7 @@ public class Doorway extends Edge {
 		room = rm;
 		vertical = v;
 	}
-	
+
 	public void flow() {
 		for (int i = 0; i < people.length; i++) {
 			Person person = people[i];

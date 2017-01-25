@@ -6,7 +6,6 @@ public class Room extends Node {
 		//capacity = c;
 		//flowRate = fR;
 		peopleHere = pp;
-		routes = hallways;
 		x = x0;
 		y = y0;
 	}

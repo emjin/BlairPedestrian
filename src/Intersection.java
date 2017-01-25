@@ -4,7 +4,6 @@ public class Intersection extends Node {
 
 	public Intersection(double c, double pp, double x0, double y0) {
 		capacity = c;
-		routes = hallways;
 		peopleHere = pp;
 		x = x0;
 		y = y0;
@@ -33,7 +32,8 @@ public class Intersection extends Node {
 			 //Edge edge = person.path.getNextEdge();
 		}
 	}*/
-	
+
+	/*
 	@Override
 	public String toString() {
 		String s = x + ", " + y;
@@ -44,4 +44,5 @@ public class Intersection extends Node {
 		}
 		return s;
 	}
+	*/
 }

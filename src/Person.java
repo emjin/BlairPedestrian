@@ -5,6 +5,7 @@ public class Person {
 	public double location; //maybe delete this
 	public static final double AVG = 5;
 	public static final double MIN = 1;
+	public double totalDistance;
 
 	Map map = PedestrianTraffic.map;
 
@@ -13,16 +14,21 @@ public class Person {
 		//System.out.println("Person says hiiiiiiiiiiiiiii");
 		//System.out.println(start + " " + end);
 		path = map.genPath(start, end);
-		distance = getDistance();
+		distance = 0;
 		this.speed = speed;
+		totalDistance = path.distances.get(path.distances.size() - 1);
 
 	}
 
 	public void run(double r, double p, double iConstant){ //Substracts you distance from the path.
-		r = Math.sqrt(r/getHallway().capacity);
-		p = Math.sqrt(p/getHallway().capacity);
-		double actSpeed = speed + pos(AVG-speed) * r / (r + 10) - pos((speed-AVG) * p / (p + 10));
-		distance += actSpeed*iConstant;
+		System.out.println(totalDistance-distance);
+		if(distance < totalDistance) {
+			r = Math.sqrt(r / getHallway().capacity);
+			p = Math.sqrt(p / getHallway().capacity);
+			double actSpeed = speed + pos(AVG - speed) * r / (r + 100) - pos((speed - AVG) * p / (p + 100));
+			//System.out.println(actSpeed);
+			distance += actSpeed * iConstant;
+		}
 	}
 
 	public double pos(double num){ //returns num if pos. 0 if neg.
@@ -38,6 +44,7 @@ public class Person {
 	}
 
 	public double getDistance(){ //This returns how far you are on the edge. Not the path.
+		//System.out.println(distance);
 		return path.getDistance(distance);
 	}
 

@@ -7,7 +7,7 @@ public abstract class Node {
 	public double y;
 
 	public Node() {};
-	
+
 	public String toString() {
 		return x + ", " + y;
 	}
