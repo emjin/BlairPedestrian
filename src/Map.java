@@ -48,31 +48,36 @@ public class Map {
     	//Top vertical hallway 1
     	x1 = 235; y1 = 240; interval = 10;
     	
-       	intersections[curInter] = new Intersection(1, 2, 0, x1, y1); curInter += 1;
+       	intersections[curInter] = new Intersection(1, 0, x1, y1); curInter += 1;
         genHall(y0, y1, x1, interval, 1);
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, rooms[end], intersections[curInter-1], intersections[curInter-1], rooms[end], x1, y1, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[end], intersections[curInter-1], x1, y1, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-1], rooms[end], x1, y1, 1); curEdge += 1;
     	x0 = x1; y0 = y1;
 
     	//Top horizontal hallway 1
     	x1 = 325; y1 = 240; interval = 15;
     	
-    	intersections[curInter] = new Intersection(1, 2, 0, x1, y1); curInter += 1;
+    	intersections[curInter] = new Intersection(1, 0, x1, y1); curInter += 1;
     	genHall(x0, x1, y1, interval, 0);
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, intersections[curInter-2], rooms[start], rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
-    	intersections[curInter-2].routes[0] = edges[curEdge-1];
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, rooms[end], intersections[curInter-1], intersections[curInter-1], rooms[end], x1, y1, 0); curEdge += 1;
-    	intersections[curInter-2].routes[1] = edges[curEdge-1];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-2], rooms[start], x0, y0, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
+    	intersections[curInter-2].routes[0] = edges[curEdge-2];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[end], intersections[curInter-1], x1, y1, 0); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-1], rooms[end], x1, y1, 0); curEdge += 1;
+    	intersections[curInter-1].routes[1] = edges[curEdge-1];
     	x0 = x1; y0 = y1;
     	
     	//Top vertical hallway 2 part 1
     	x1 = 325; y1 = 250; interval = 10;
     	
-    	intersections[curInter] = new Intersection(1, 2, 0, x1, y1); curInter += 1;
+    	intersections[curInter] = new Intersection(1, 0, x1, y1); curInter += 1;
     	genHall(y0, y1, x1, interval, 1);
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, intersections[curInter-2], rooms[start], rooms[start], intersections[curInter-2], x0, y0, 0); curEdge += 1;
-    	intersections[curInter-2].routes[0] = edges[curEdge-1];
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, rooms[end], intersections[curInter-1], intersections[curInter-1], rooms[end], x1, y1, 1); curEdge += 1;
-    	intersections[curInter-2].routes[1] = edges[curEdge-1];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-2], rooms[start], x0, y0, 0); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[start], intersections[curInter-2], x0, y0, 0); curEdge += 1;
+    	intersections[curInter-2].routes[0] = edges[curEdge-2];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[end], intersections[curInter-1], x1, y1, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-1], rooms[end], x1, y1, 1); curEdge += 1;
+    	intersections[curInter-1].routes[1] = edges[curEdge-1];
     	x0 = x1; y0 = y1;
     	
     	//Top vertical hallway 2 part 2
@@ -80,9 +85,11 @@ public class Map {
     	
     	//intersections[curInter] = new Intersection(1, 2, 0, x1, y1); curInter += 1;
     	genHall(y0, y1, x1, interval, 1);
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, intersections[curInter-2], rooms[start], rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
-    	intersections[curInter-1].routes[0] = edges[curEdge-1];
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, rooms[end], intersections[curInter-1], intersections[curInter-1], rooms[end], x1, y1, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-2], rooms[start], x0, y0, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
+    	intersections[curInter-1].routes[0] = edges[curEdge-2];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-2], rooms[start], x0, y0, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
     	intersections[curInter-1].routes[1] = edges[curEdge-1];
     	x0 = x1; y0 = y1;
     	
@@ -90,18 +97,20 @@ public class Map {
     	x0 = 325; y0 = 180;
     	x1 = 325; y1 = 240; interval = 10;
     	genHall(y0, y1, x1, interval, 1);
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, intersections[curInter-2], rooms[start], rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
-    	intersections[curInter-2].routes[2] = edges[curEdge-1];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-2], rooms[start], x0, y0, 1); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[start], intersections[curInter-2], x0, y0, 1); curEdge += 1;
+    	intersections[curInter-2].routes[2] = edges[curEdge-2];
     	x0 = x1; y0 = y1;
 
     	//Top horizontal hallway 2
     	x0 = 325; y0 = 250;
     	x1 = 425; y1 = 250; interval = 10;
     	
-    	intersections[curInter] = new Intersection(1, 2, 0, x1, y1); curInter += 1;
+    	intersections[curInter] = new Intersection(1, 2, x1, y1); curInter += 1;
     	genHall(x0, x1, y1, interval, 0);
-    	edges[curEdge] = new Hallway(edge_cap, edge_pop, 0, intersections[curInter-2], rooms[end], rooms[end], intersections[curInter-2], x0, y0, 0); curEdge += 1;
-    	intersections[curInter-2].routes[2] = edges[curEdge-1];
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, intersections[curInter-2], rooms[start], x0, y0, 0); curEdge += 1;
+    	edges[curEdge] = new Hallway(0, edge_cap, edge_pop, rooms[start], intersections[curInter-2], x0, y0, 0); curEdge += 1;
+    	intersections[curInter-2].routes[2] = edges[curEdge-2];
     	x0 = x1; y0 = y1;
 
     }
@@ -122,7 +131,12 @@ public class Map {
     		for(int i = start+1; i < end; i++) {
     			System.out.println("i: " + i + " start: " + start + " end: " + end + " aStart: " + aStart + " aEnd: " + aEnd + " interval: " + interval + " vertical: " + vertical);
     			rooms[i] = new Room(room_size, room_flow, init_pop, aStart+(i-start)*interval, b);
-    			edges[curEdge] = new Hallway(edge_cap, edge_pop, edge_init, rooms[i-1], rooms[i], rooms[i], rooms[i-1], aStart+(i-start)*interval, b, vertical);
+    			//
+    			edges[curEdge] = new Hallway(interval, edge_cap, edge_pop, rooms[i-1], rooms[i], aStart+(i-start)*interval, b, vertical);
+    			curEdge += 1;
+    			edges[curEdge] = new Hallway(-interval, edge_pop, edge_init, rooms[i], rooms[i-1], aStart+(i-start)*interval, b, vertical);
+    			rooms[i].routes[0] = edges[curEdge];
+    			rooms[i-1].routes[1] = edges[curEdge-1];
     			curEdge += 1;
     		}
     	}else{
@@ -130,12 +144,15 @@ public class Map {
     		for(int i = start+1; i < end; i++) {
     			System.out.println("i: " + i + " start: " + start + " end: " + end + " aStart: " + aStart + " aEnd: " + aEnd + " interval: " + interval + " vertical: " + vertical);
     			rooms[i] = new Room(room_size, room_flow, init_pop, b, aStart+(i-start)*interval);
-    			edges[curEdge] = new Hallway(edge_cap, edge_pop, edge_init, rooms[i-1], rooms[i], rooms[i], rooms[i-1], b, aStart+(i-start)*interval, vertical);
+    			edges[curEdge] = new Hallway(interval, edge_pop, edge_init, rooms[i-1], rooms[i], b, aStart+(i-start)*interval, vertical);
+    			curEdge += 1;
+    			edges[curEdge] = new Hallway(-interval, edge_pop, edge_init, rooms[i], rooms[i-1], b, aStart+(i-start)*interval, vertical);
     			curEdge += 1;
     		}
     	}
     	start += end - start;
     }
+
     
     public String toString() {
 		String s = "Rooms\n";
