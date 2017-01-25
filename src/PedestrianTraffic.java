@@ -78,6 +78,8 @@ public class PedestrianTraffic {
 					}
 				}
 
+
+
 				people[i].run(resistance,pressure,iConstant);
 			}
 		}

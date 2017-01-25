@@ -5,21 +5,18 @@ public class Hallway extends Edge {
 
 	public double length;
 	public double capacity;
-	public double numPeople = new double;
-	//public Node[][] sides = new Node[2][2];
+	//public double numPeople = new double;
+	public Node start;
+	public Node end;
 	
 	//public Person[] people;
 	
-	public Hallway(double len, double cap, double numP, double x0, double y0, double v) {
+	public Hallway(double len, double cap, double numP, Node start, Node end double x0, double y0, double v) {
 		length = len;
 		
 		capacity = cap;
-		/*
-		sides[0][0] = l1;
-		sides[0][1] = l2;
-		sides[1][0] = r1;
-		sides[1][1] = r2;
-		*/
+		this.begin = start;
+		this.end = end;
 		
 		x = x0;
 		y = y0;

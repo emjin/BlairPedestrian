@@ -19,7 +19,8 @@ public class Person {
 	}
 
 	public void run(double r, double p, double iConstant){ //Substracts you distance from the path.
-		r = Math.sqrt();
+		r = Math.sqrt(r/getHallway().capacity);
+		p = Math.sqrt(p/getHallway().capacity);
 		double actSpeed = speed + pos(AVG-speed) * r / (r + 10) - pos((speed-AVG) * p / (p + 10));
 		distance += actSpeed*iConstant;
 	}

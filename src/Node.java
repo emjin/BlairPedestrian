@@ -2,7 +2,7 @@
 public abstract class Node {
 	public double capacity;
 	public double peopleHere;
-	//public Edge[] route
+	public Edge[] routes
 	public double x;
 	public double y;
 
