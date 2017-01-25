@@ -1,8 +1,8 @@
 public class Room extends Node {
 
-	routes = new Edge[2];
+	public Hallway[] routes = new Hallway[2];
 
-	public Room(double c, double fR, double pp, Edge[] hallways double x0, double y0) {
+	public Room(double c, double fR, double pp, Hallway[] hallways, double x0, double y0) {
 		//capacity = c;
 		//flowRate = fR;
 		peopleHere = pp;

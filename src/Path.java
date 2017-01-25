@@ -40,7 +40,7 @@ public class Path {
                 return (Intersection)nodes.get(i); //Maybe i +- 1. C
             }
         }
-        throw new RuntimeException("bug in getIntesection");
+        return null;
     }
 
     public double getRDistance(double distance){

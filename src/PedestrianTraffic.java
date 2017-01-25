@@ -16,8 +16,8 @@ import javax.swing.Timer;
 import org.apache.commons.math3.distribution.NormalDistribution;
 
 public class PedestrianTraffic {
-	public static final double STUDENT_MU = 1.2; // feet/s
-	public static final double STUDENT_SIG = 4.0;
+	public static final double STUDENT_MU = 1.32*0.328; // feet/s
+	public static final double STUDENT_SIG = 0.17*0.328;
 	public static final int NUM_STUDENTS = 3000;
 	public static final int TIME = 3600;
 	public static int[] roomCDF = {}; //This will be the CDF of the rooms. We'll randomly sample from bill.
@@ -59,8 +59,13 @@ public class PedestrianTraffic {
 			for (int i = 0; i < NUM_STUDENTS; i++) {
 				double pressure = 0;
 				double resistance = 0;
-				double iConstant = 0;
-				int intersectionP;
+				double iConstant = 1;
+				Hallway[] intersectionH = new Hallway[3];
+				int[] hallwaysP = new int[3];
+				if(people[i].getIntersection != null){
+					intersectionH = people[i].getIntersection().hallways;
+					hallwaysP = {0,0,0};
+				}
 				for (int j = 0; j < NUM_STUDENTS; j++) {
 					if(people[i].getHallway().equals(people[j].getHallway())){
 						double diff = people[i].getDistance() - people[j].getDistance();
@@ -71,14 +76,21 @@ public class PedestrianTraffic {
 							pressure += (5+diff);
 						}
 					}
-					if(person[j].getIntersection().equals(person[i].getIntersection())){
-						if(person[j].getDistance() < 10){
-							intersectionP++;
+
+					if(people[i].getIntersection != null) {
+						for (int k = 0; k < 3; k++) {
+							if (people[j].getHallway().equals(hallways[k])) {
+								if (people[j].getDistance() < 10) {
+									hallwaysP[k]++;
+								}
+							}
 						}
 					}
 				}
 
-
+				if(people[i].getIntersection() != null){
+					iConstant = people[i].getIntersection().calcConstant(hallwaysP);
+				}
 
 				people[i].run(resistance,pressure,iConstant);
 			}
