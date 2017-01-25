@@ -136,7 +136,7 @@ public class Map {
     	}
     	start += end - start;
     }
-
+    
     public String toString() {
 		String s = "Rooms\n";
 		for(int i = 0; i < rooms.length; i++) {
