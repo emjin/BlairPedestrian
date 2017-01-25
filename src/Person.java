@@ -19,7 +19,8 @@ public class Person {
 	}
 
 	public void run(double r, double p, double iConstant){ //Substracts you distance from the path.
-		double actSpeed = speed + pos(AVG-speed) * r / (r + 10) - pos((speed-MIN) * p / (p + 10));
+		r = Math.sqrt();
+		double actSpeed = speed + pos(AVG-speed) * r / (r + 10) - pos((speed-AVG) * p / (p + 10));
 		distance += actSpeed*iConstant;
 	}
 
@@ -34,7 +35,6 @@ public class Person {
 	public double getAbsoluteDistance(){ //Don't see a reason to ever use this. Maybe to get some nice data at the end
 		return distance;
 	}
-
 
 	public double getDistance(){ //This returns how far you are on the edge. Not the path.
 		return path.getDistance(distance);

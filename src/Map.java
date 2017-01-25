@@ -9,7 +9,7 @@ public class Map {
 	
 	public static Room[] rooms = new Room[NUM_ROOMS];
     public static Intersection[] intersections = new Intersection[NUM_INTERSECTIONS];
-    public static Edge[] edges = new Edge[NUM_ROOMS + NUM_INTERSECTIONS];
+    public static Hallway[] edges = new Edge[NUM_ROOMS + NUM_INTERSECTIONS];
     
     private static int curEdge = 0; 
     private static int start = 0;
