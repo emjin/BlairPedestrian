@@ -11,11 +11,11 @@ public class Hallway extends Edge {
 	
 	//public Person[] people;
 	
-	public Hallway(double len, double cap, double numP, Node start, Node end double x0, double y0, double v) {
+	public Hallway(double len, double cap, double numP, Node start, Node end, double x0, double y0, double v) {
 		length = len;
 		
 		capacity = cap;
-		this.begin = start;
+		this.start = start;
 		this.end = end;
 		
 		x = x0;

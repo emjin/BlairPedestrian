@@ -22,13 +22,13 @@ public class PedestrianTraffic {
 	public static final int TIME = 3600;
 	public static int[] roomCDF = {}; //This will be the CDF of the rooms. We'll randomly sample from bill.
 	public static Map map;
-	
+
 	static Room[] rooms = Map.rooms;
 	static Intersection[] intersections = Map.intersections;
 	static Hallway[] edges = Map.edges;
 	static Person[] people = new Person[NUM_STUDENTS];
-	
-	
+
+
 	public static void main(String[] args) {
 		map = new Map();
 		System.out.println(map);
@@ -48,23 +48,14 @@ public class PedestrianTraffic {
 		}
 
 		for(int time = 0; time < TIME; time++) {
-			for(int i = 0; i < edges.length; i++){
-				for(int j = 0; j < NUM_STUDENTS; j++){
-					if(people[j].getHallway().equals(edges[i]){
-						edges[i].numPeople += 1;
-					}
-				}
-			}
-
 			for (int i = 0; i < NUM_STUDENTS; i++) {
 				double pressure = 0;
 				double resistance = 0;
 				double iConstant = 1;
 				Hallway[] intersectionH = new Hallway[3];
-				int[] hallwaysP = new int[3];
-				if(people[i].getIntersection != null){
-					intersectionH = people[i].getIntersection().hallways;
-					hallwaysP = {0,0,0};
+				int[] hallwaysP = {0,0,0};
+				if(people[i].getIntersection() != null){
+					intersectionH = people[i].getIntersection().routes;
 				}
 				for (int j = 0; j < NUM_STUDENTS; j++) {
 					if(people[i].getHallway().equals(people[j].getHallway())){
@@ -77,9 +68,9 @@ public class PedestrianTraffic {
 						}
 					}
 
-					if(people[i].getIntersection != null) {
+					if(people[i].getIntersection() != null) {
 						for (int k = 0; k < 3; k++) {
-							if (people[j].getHallway().equals(hallways[k])) {
+							if (people[j].getHallway().equals(hallwaysP[k])) {
 								if (people[j].getDistance() < 10) {
 									hallwaysP[k]++;
 								}
@@ -95,10 +86,10 @@ public class PedestrianTraffic {
 				people[i].run(resistance,pressure,iConstant);
 			}
 		}
-		
+
 		Surface surface = new Surface(people, edges);
 	}
-	
+
 	public static int genClass(){
 		double num = Math.random();
 
