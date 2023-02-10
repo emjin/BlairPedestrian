@@ -17,7 +17,7 @@ jobs:
     env:
       SEMGREP_APP_TOKEN: ${{ secrets.SEMGREP_APP_TOKEN }}
     container:
-      image: returntocorp/semgrep:pr-7043
+      image: returntocorp/semgrep:1.9.0
     steps:
     - uses: actions/checkout@v3
     - run: semgrep ci
